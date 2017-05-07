@@ -6,7 +6,7 @@ public class Processor {
 	public static int moves;
 	public static HealthState healthState;
 	public Action action;
-	
+    PlaceCareTaker places = new PlaceCareTaker();
 
 	public Processor(){
 	}
@@ -37,7 +37,7 @@ public class Processor {
 		}
 
 
-	public static void determineAction(String args[]) {
+	public  void determineAction(String args[]) {
         try {
             Action action = new Action();
             String act = args[0];
@@ -60,6 +60,10 @@ public class Processor {
                 System.out.println("Enroll - Starts a new game");
                 newLine();
                 System.out.println("Go + Direction - move in the direction given on campus");
+                newLine();
+                System.out.println("Beginning - go back to your dorm room");
+                newLine();
+                System.out.println("Back - go back to your previous location");
                 newLine();
                 System.out.println("Examine + Item - examine item in inventory");
                 newLine();
@@ -115,6 +119,9 @@ public class Processor {
                 }
                 else if (act.equals("go")) {
                     action.move(args[1]);
+                }
+                else if(act.equals("back")){
+                    action.goBack();
                 }
                 else if (act.equals("look")) {
                     String desc = world.getLocation().getDescription();

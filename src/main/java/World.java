@@ -349,6 +349,11 @@ public class World extends Processor implements Place{
 
 	}
 
+	public Location[][] returnBoard(){
+		return board;
+	}
+
+
 	public static boolean checkNorth()
 	{
 		if(board[xPos][yPos+1] == null)

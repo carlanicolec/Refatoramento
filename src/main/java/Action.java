@@ -20,8 +20,13 @@ public class Action extends Processor{
 		proxyPlace.goToStart();
 	}
 
-	public void move(String instr){
+	public void goBack(){
+		Location[][] last = places.getLast();
+		world.setBoard(last);
+	}
 
+	public void move(String instr){
+		places.addMemento(world.returnBoard());
 		if (instr.equals("north")) {
 			if(world.checkNorth()){
 				world.moveNorth();
