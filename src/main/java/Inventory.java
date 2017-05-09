@@ -15,14 +15,18 @@ public class Inventory extends Processor {
 	public static void add(Item itemToAdd)
 	{ 
 		bookbag.add(itemToAdd);
+		System.out.println("Item in your bag");
 	}
 
-	public static Item drop(Item itemToRemove)
-	{	
-		bookbag.remove(itemToRemove);
-
-		return itemToRemove;
-
+	public static Item drop(Item itemToRemove) {
+		if (bookbag.contains(itemToRemove)) {
+			bookbag.remove(itemToRemove);
+			System.out.println("Item droped");
+			return itemToRemove;
+		}else {
+			System.out.println("Item is not in your bookbag");
+			return null;
+		}
 	}
 
 	public static Item getInventoryItem(String itemToGet)
@@ -59,7 +63,7 @@ public class Inventory extends Processor {
 
 		for(int i = 0; i < bookbag.size();i++)
 		{	
-			if(bookbag.get(i).getItem().equals(itemsToHave1))	
+			if(bookbag.get(i).getItem().equals(itemsToHave1))
 			{	
 				for(int j = 0; j < bookbag.size();j++)
 				{	

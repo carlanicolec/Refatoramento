@@ -13,12 +13,15 @@ public class Location{
 		items = c;
 	}
 
+	public Location() {
+	}
+
 	public Item remove(String itemToRemove){
 		for(int i = 0; i < items.size();i++){
 			
 			if(items.get(i).getItem().equals(itemToRemove))	
 			{	
-				System.out.println("Removing item");
+				System.out.println("Taking item");
 				return items.remove(i);
 			}
 		}

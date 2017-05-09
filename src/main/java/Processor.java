@@ -113,51 +113,38 @@ public class Processor {
             if (gameStart) {
                 if (act.equals("clear")) {
                     clear();
-                }
-                else if (act.equals("beginning")) {
-                   action.beginning();
-                }
-                else if (act.equals("go")) {
+                } else if (act.equals("beginning")) {
+                    action.beginning();
+                } else if (act.equals("go")) {
                     action.move(args[1]);
-                }
-                else if(act.equals("back")){
+                } else if (act.equals("back")) {
                     action.goBack();
-                }
-                else if (act.equals("look")) {
+                } else if (act.equals("look")) {
                     String desc = world.getLocation().getDescription();
                     System.out.println(desc);
-                }
-                else if (act.equals("where")) {
+                } else if (act.equals("where")) {
                     action.nextMove();
-                }
-                else if (act.equals("energy")) {
+                } else if (act.equals("energy")) {
                     life();
-                }
-                else if (act.equals("time")) {
+                } else if (act.equals("time")) {
                     time();
-                }
-                else if (act.equals("location")) {
+                } else if (act.equals("location")) {
                     world.getBoardPosition();
-                }
-                else if (act.equals("items")) {
+                } else if (act.equals("items")) {
                     newLine();
                     System.out.println("Items in Location");
                     System.out.println(world.getLocation().getListOfItems());
 
-                }
-                else if (act.equals("take")) {
+                } else if (act.equals("take")) {
                     action.take(args[1]);
-                }
-                else if (act.equals("drop")) {
+                } else if (act.equals("drop")) {
                     action.drop(args[1]);
-                }
-                else if (act.equals("inventory")) {
+                } else if (act.equals("inventory")) {
                     try {
                         System.out.println(inventory.listInventory());
                     } catch (NullPointerException ex) {
                         System.out.println("");
                     }
-                }
                 } else if (act.equals("examine")) {
                     action.examine(args[1]);
                 } else if (act.equals("use")) {
@@ -166,12 +153,10 @@ public class Processor {
                     action.eat(args[1]);
                 } else if (act.equals("drink")) {
                     action.drink(args[1]);
+                } else {
+                    System.out.println("Insert a valid command. If you don't know commands type 'command'");
                 }
-
-                else {
-				System.out.println("You must enroll first!!");
-		    	}
-
+            }
 	 	}
 
 	 catch (ArrayIndexOutOfBoundsException ex)

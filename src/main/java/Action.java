@@ -47,7 +47,7 @@ public class Action extends Processor{
 			}
 		}
 
-		if (instr.equals("east")){
+		else if (instr.equals("east")){
 			if(world.checkEast()) {
 							world.moveEast();
 							world.getBoardPosition();
@@ -67,7 +67,7 @@ public class Action extends Processor{
 					}
 				}
 
-			if (instr.equals("south")) {
+		else if (instr.equals("south")) {
 					if(world.checkSouth()) {
 							world.moveSouth();
 							world.getBoardPosition();
@@ -87,7 +87,7 @@ public class Action extends Processor{
 					}
 				}
 
-			if (instr.equals("west")){
+			else if (instr.equals("west")){
 					if(world.checkWest())
 						{	
 							world.moveWest();
@@ -107,35 +107,50 @@ public class Action extends Processor{
 					else {
 						System.out.println("You cant go there");
 					}
-				}
-	
+			}
+			else{
+			System.out.println("Pick between 'north', 'south', 'east' or 'west'");
+		}
 	}
 
 	public void take(String toRemove) {
 		// if ToRemove = Item listed in location remove it from location
-		Item item = world.getLocation().remove(toRemove);
+		try {
+			String temp = world.getLocation().getListOfItems();
+			if (temp.contains(toRemove)){
+				Item item = world.getLocation().remove(toRemove);
 
-		// place item in Inventory
-		inventory.add(item);
+				// place item in Inventory
+				inventory.add(item);
+			}else throw new NullPointerException();
+
+		}catch (NullPointerException e){
+			System.out.println("Item not available in this location");
+		}
 	}
-
 	public void drop(String toDrop) {
-		Item d = inventory.getInventoryItem(toDrop);
+		try {
+			Item d = inventory.getInventoryItem(toDrop);
 
-		Item d2 = inventory.drop(d);
+			Item d2 = inventory.drop(d);
 
-		world.getLocation().addItemToLocation(d2);
-
+			world.getLocation().addItemToLocation(d2);
+		}catch (NullPointerException e){
+			System.out.println("Item is not in your bag");
+		}
 	}
 
 	public void examine(String toExamine)
 	{
-		Item item = inventory.getInventoryItem(toExamine);
+		try {
+			Item item = inventory.getInventoryItem(toExamine);
 
-		String itemDescription = item.getDescription();
-		
-		System.out.println(itemDescription);
+			String itemDescription = item.getDescription();
 
+			System.out.println(itemDescription);
+		}catch (NullPointerException e){
+			System.out.println("Item is not in the inventory");
+	}
 	}
 
 	public void eat(String toEat)
