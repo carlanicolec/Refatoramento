@@ -14,7 +14,7 @@ public class CollegeKid {
 		newLine();
 		System.out.println("Made by H A M II™");
 		newLine();
-								
+
 		Scanner input = new Scanner(System.in);
 
 		Processor p = new Processor();

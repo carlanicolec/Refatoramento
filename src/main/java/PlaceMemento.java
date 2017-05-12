@@ -1,12 +1,13 @@
 
 public class PlaceMemento {
-    protected Location[][] position;
+    protected int xPos, yPos;
 
-    public void savePosition(Location[][] position){
-        position = position;
+    public void savePositionX(int xPos){
+        xPos = xPos;
     }
 
-    public Location[][] getPlace(){
-        return position;
+    public void savePositionY(int yPos){
+        yPos = yPos;
     }
+
 }

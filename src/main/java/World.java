@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class World extends Processor implements Place{
+public class World {
 
 	public static int xPos;
 	public static int yPos;
@@ -347,10 +347,6 @@ public class World extends Processor implements Place{
 
 		System.out.println(position);
 
-	}
-
-	public Location[][] returnBoard(){
-		return board;
 	}
 
 

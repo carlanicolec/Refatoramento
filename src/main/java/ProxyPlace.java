@@ -1,4 +1,4 @@
-public class ProxyPlace implements Place {
+public class ProxyPlace {
 
     public void goToStart(){
         World.xPos = 10;

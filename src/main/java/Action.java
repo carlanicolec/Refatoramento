@@ -1,5 +1,5 @@
 public class Action extends Processor{
-	
+
 	public Action()
 	{ 	
 
@@ -21,12 +21,13 @@ public class Action extends Processor{
 	}
 
 	public void goBack(){
-		Location[][] last = places.getLast();
-		world.setBoard(last);
+		World.xPos = places.getLastX();
+		World.yPos = places.getLastY();
 	}
 
 	public void move(String instr){
-		places.addMemento(world.returnBoard());
+		places.addXMemento(world.getXPos());
+		places.addYMemento(world.getYPos());
 		if (instr.equals("north")) {
 			if(world.checkNorth()){
 				world.moveNorth();

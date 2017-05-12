@@ -1,20 +1,26 @@
 import java.util.ArrayList;
 
 public class PlaceCareTaker {
-    protected ArrayList<Location[][]> allLocations = new ArrayList<Location[][]>();
+    protected ArrayList<Integer> allX = new ArrayList<Integer>();
+    protected ArrayList<Integer> allY = new ArrayList<Integer>();
 
-    public void addMemento(Location[][] newLocation){
-        allLocations.add(newLocation);
+
+    public void addXMemento(int xPos){
+        allX.add(xPos);
     }
 
-    public Location[][] getLast(){
-        if (allLocations.size()==0){
-            System.out.println("You are at the beginning. Can't go back.");
-            return null;
-        }else{
-            Location[][] lastLocation = allLocations.get(allLocations.size()-1);
-            allLocations.remove(allLocations.size()-1);
-            return lastLocation;
-        }
+    public void addYMemento(int yPos){
+        allY.add(yPos);
     }
+
+    public int getLastX(){
+        int lastX = allX.size()-1;
+        return lastX;
+    }
+    public int getLastY(){
+        int lastY = allY.size()-1;
+        return lastY;
+    }
+
+
 }
