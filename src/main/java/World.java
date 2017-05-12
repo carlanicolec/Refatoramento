@@ -6,7 +6,7 @@ public class World {
 	public static int yPos;
 	private static Location board[][] = new Location[100][100];
 	private static String testLocation;
-	//List of Items avaiable in World 
+	//List of Items avaiable in World
 	private static final String pencil = "pencil";
 	private static final String sandwich = "spicy_chicken_sandwich";
 	private static final String soda = "soda";

@@ -6,7 +6,7 @@ public class Processor {
 	public static int moves;
 	public static HealthState healthState;
 	public Action action;
-    PlaceCareTaker places = new PlaceCareTaker();
+    PlaceCareTaker places = PlaceCareTaker.getInstance();
 
 	public Processor(){
 	}
@@ -160,9 +160,9 @@ public class Processor {
 	 	}
 
 	 catch (ArrayIndexOutOfBoundsException ex)
-	 	{	
+	 	{
 	 		 System.out.println("invalid command");
-	 		
+
 	 	}
 
 	}

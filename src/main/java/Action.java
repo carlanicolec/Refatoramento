@@ -1,4 +1,4 @@
-public class Action extends Processor{
+public class Action extends Processor implements Place{
 
 	public Action()
 	{ 	
@@ -17,7 +17,7 @@ public class Action extends Processor{
 		}
 		moves += 1;
 		ProxyPlace proxyPlace = new ProxyPlace();
-		proxyPlace.goToStart();
+		proxyPlace.goBack();
 	}
 
 	public void goBack(){
