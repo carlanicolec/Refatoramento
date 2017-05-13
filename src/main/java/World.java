@@ -31,8 +31,7 @@ public class World {
 		World.board = board;
 	}
 	
-	public World(int a, int b)
-	{	
+	public World(int a, int b) {
 		xPos = a;
 		yPos = b;
 
@@ -349,6 +348,11 @@ public class World {
 
 	}
 
+	public static String getLocationName(int x, int y){
+		String position = board[x][y].getLocationName();
+		return position;
+	}
+
 
 	public static boolean checkNorth()
 	{
@@ -433,7 +437,7 @@ public class World {
 	{
 		return yPos;
 	}
-	
+
 	public static void main(String args[])
 	{}
 

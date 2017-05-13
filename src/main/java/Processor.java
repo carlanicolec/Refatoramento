@@ -8,7 +8,8 @@ public class Processor {
 	public Action action;
     PlaceCareTaker places = PlaceCareTaker.getInstance();
 
-	public Processor(){
+
+    public Processor(){
 	}
 
 	public String processCommand (String command){
@@ -61,9 +62,9 @@ public class Processor {
                 newLine();
                 System.out.println("Go + Direction - move in the direction given on campus");
                 newLine();
-                System.out.println("Beginning - go back to your dorm room");
+                System.out.println("Go + beginning - go back to your dorm room");
                 newLine();
-                System.out.println("Back - go back to your previous location");
+                System.out.println("Go + back - go back to your previous location");
                 newLine();
                 System.out.println("Examine + Item - examine item in inventory");
                 newLine();
@@ -113,12 +114,8 @@ public class Processor {
             if (gameStart) {
                 if (act.equals("clear")) {
                     clear();
-                } else if (act.equals("beginning")) {
-                    action.beginning();
                 } else if (act.equals("go")) {
                     action.move(args[1]);
-                } else if (act.equals("back")) {
-                    action.goBack();
                 } else if (act.equals("look")) {
                     String desc = world.getLocation().getDescription();
                     System.out.println(desc);

@@ -1,35 +1,15 @@
-public class Action extends Processor implements Place{
+public class Action extends Processor{
 
 	public Action()
 	{ 	
 
 	}
 
-	public void beginning(){
-		if (healthState.getLife() > 5){
-			GoodHealth good = new GoodHealth();
-			good.decreaseHealth(1);
-			healthState = good;
-		}else if (healthState.getLife() <= 5){
-			BadHealth bad = new BadHealth();
-			bad.decreaseHealth(1);
-			healthState = bad;
-		}
-		moves += 1;
-		ProxyPlace proxyPlace = new ProxyPlace();
-		proxyPlace.goBack();
-	}
-
-	public void goBack(){
-		World.xPos = places.getLastX();
-		World.yPos = places.getLastY();
-	}
-
 	public void move(String instr){
-		places.addXMemento(world.getXPos());
-		places.addYMemento(world.getYPos());
 		if (instr.equals("north")) {
 			if(world.checkNorth()){
+				places.addXMemento(world.getXPos());
+				places.addYMemento(world.getYPos());
 				world.moveNorth();
 				world.getBoardPosition();
 				if (healthState.getLife() > 5){
@@ -47,70 +27,96 @@ public class Action extends Processor implements Place{
 				System.out.println("Cant go there");
 			}
 		}
-
 		else if (instr.equals("east")){
 			if(world.checkEast()) {
-							world.moveEast();
-							world.getBoardPosition();
-							if (healthState.getLife() > 5){
-								GoodHealth good = new GoodHealth();
-								good.decreaseHealth(1);
-								healthState = good;
-							}else if (healthState.getLife() <= 5){
-								BadHealth bad = new BadHealth();
-								bad.decreaseHealth(1);
-								healthState = bad;
-							}
-							moves += 1;
-						}
-					else{
-						System.out.println("Cant go there");
-					}
+				places.addXMemento(world.getXPos());
+				places.addYMemento(world.getYPos());
+				world.moveEast();
+				world.getBoardPosition();
+				if (healthState.getLife() > 5) {
+					GoodHealth good = new GoodHealth();
+					good.decreaseHealth(1);
+					healthState = good;
+				}else if (healthState.getLife() <= 5){
+					BadHealth bad = new BadHealth();
+					bad.decreaseHealth(1);
+					healthState = bad;
 				}
-
+					moves += 1;
+				}
+				else{
+					System.out.println("Cant go there");
+				}
+		}
 		else if (instr.equals("south")) {
-					if(world.checkSouth()) {
-							world.moveSouth();
-							world.getBoardPosition();
-							if (healthState.getLife() > 5){
-								GoodHealth good = new GoodHealth();
-								good.decreaseHealth(1);
-								healthState = good;
-							}else if (healthState.getLife() <= 5){
-								BadHealth bad = new BadHealth();
-								bad.decreaseHealth(1);
-								healthState = bad;
-							}
-							moves += 1;
-						}
-					else{
-							System.out.println("Cant go there");
-					}
+			if (world.checkSouth()) {
+				places.addXMemento(world.getXPos());
+				places.addYMemento(world.getYPos());
+				world.moveSouth();
+				world.getBoardPosition();
+				if (healthState.getLife() > 5) {
+					GoodHealth good = new GoodHealth();
+					good.decreaseHealth(1);
+					healthState = good;
+				} else if (healthState.getLife() <= 5) {
+					BadHealth bad = new BadHealth();
+					bad.decreaseHealth(1);
+					healthState = bad;
 				}
-
-			else if (instr.equals("west")){
-					if(world.checkWest())
-						{	
-							world.moveWest();
-							world.getBoardPosition();
-							if (healthState.getLife() > 5){
-								GoodHealth good = new GoodHealth();
-								good.decreaseHealth(1);
-								healthState = good;
-							}else if (healthState.getLife() <= 5){
-								BadHealth bad = new BadHealth();
-								bad.decreaseHealth(1);
-								healthState = bad;
-							}
-							moves += 1;
-						}
-					
-					else {
-						System.out.println("You cant go there");
-					}
+				moves += 1;
+			} else {
+				System.out.println("Cant go there");
 			}
-			else{
-			System.out.println("Pick between 'north', 'south', 'east' or 'west'");
+		} else if (instr.equals("west")){
+			if(world.checkWest()){
+				places.addXMemento(world.getXPos());
+				places.addYMemento(world.getYPos());
+				world.moveWest();
+				world.getBoardPosition();
+				if (healthState.getLife() > 5){
+					GoodHealth good = new GoodHealth();
+					good.decreaseHealth(1);
+					healthState = good;
+				}else if (healthState.getLife() <= 5){
+					BadHealth bad = new BadHealth();
+					bad.decreaseHealth(1);
+					healthState = bad;
+				}
+				moves += 1;
+			}
+			else {
+				System.out.println("You cant go there");
+			}
+		}else if (instr.equals("back")) {
+				if (healthState.getLife() > 5){
+					GoodHealth good = new GoodHealth();
+					good.decreaseHealth(1);
+					healthState = good;
+				}else if (healthState.getLife() <= 5){
+					BadHealth bad = new BadHealth();
+					bad.decreaseHealth(1);
+					healthState = bad;
+				}
+				moves += 1;
+				ProxyBack proxyBack = new ProxyBack();
+				proxyBack.goBack();
+
+		}else if (instr.equals("beginning")){
+			if (healthState.getLife() > 5){
+				GoodHealth good = new GoodHealth();
+				good.decreaseHealth(1);
+				healthState = good;
+			}else if (healthState.getLife() <= 5){
+				BadHealth bad = new BadHealth();
+				bad.decreaseHealth(1);
+				healthState = bad;
+			}
+			moves += 1;
+			ProxyPlace proxyPlace = new ProxyPlace();
+			proxyPlace.goBack();
+		}
+		else{
+			System.out.println("Pick between 'north', 'south', 'east', 'west', 'back' or 'beginning' ");
 		}
 	}
 

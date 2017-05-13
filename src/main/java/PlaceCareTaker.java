@@ -15,6 +15,14 @@ public class PlaceCareTaker {
         return instance;
     }
 
+    protected void removeX(int index){
+        allX.remove(index);
+    }
+
+    protected void removeY(int index){
+        allY.remove(index);
+    }
+
     public void addXMemento(int xPos){
         allX.add(xPos);
     }
@@ -23,13 +31,24 @@ public class PlaceCareTaker {
         allY.add(yPos);
     }
 
+    public int getXSize(){
+        return allX.size();
+    }
+    public int getYSize(){
+        return allY.size();
+    }
+
     public int getLastX(){
-        int lastX = allX.size()-1;
-        return allX.get(lastX);
+        int lastX = allX.get(allX.size()-1);
+        int index = allX.size()-1;
+        removeX(index);
+        return lastX;
     }
     public int getLastY(){
-        int lastY = allY.size()-1;
-        return allY.get(lastY);
+        int lastY =allY.get(allY.size()-1);
+        int index = allY.size()-1;
+        removeY(index);
+        return lastY;
     }
 
 
