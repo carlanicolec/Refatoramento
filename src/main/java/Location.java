@@ -6,8 +6,7 @@ public class Location{
 	private String description;
 	private ArrayList<Item> items = new ArrayList<Item>();
 
-	public Location(String a, String b, ArrayList<Item> c)
-	{
+	public Location(String a, String b, ArrayList<Item> c){
 		name = a;
 		description = b;
 		items = c;
@@ -18,46 +17,33 @@ public class Location{
 
 	public Item remove(String itemToRemove){
 		for(int i = 0; i < items.size();i++){
-			
-			if(items.get(i).getItem().equals(itemToRemove))	
-			{	
+			if(items.get(i).getItem().equals(itemToRemove)) {
 				System.out.println("Taking item");
 				return items.remove(i);
 			}
 		}
-
 		return null;
 	}
 
-	public String getLocationName()
-	{
+	public String getLocationName() {
 		return name;
 	}
 
-	public void addItemToLocation(Item a)
-	{
+	public void addItemToLocation(Item a) {
 		items.add(a);
 	}
 
-	public String getDescription()
-	{
+	public String getDescription() {
 		return description;
 	}
 
-	public String getListOfItems()
-	{
+	public String getListOfItems() {
 		String temp = "";
 
-		for (int i = 0; i < items.size(); i++)
-		{
+		for (int i = 0; i < items.size(); i++) {
 			temp += items.get(i).getItem()+"\n";
 		}
-
 		return temp;	
 	}
 
-	
-
-
-	
 }

@@ -336,8 +336,7 @@ public class World {
 
 	}
 
-	public void getBoardPosition()
-	{	
+	public void getBoardPosition() {
 		String position = board[xPos][yPos].getLocationName();
 
 		System.out.print(xPos);
@@ -345,7 +344,6 @@ public class World {
 		System.out.println(yPos);
 
 		System.out.println(position);
-
 	}
 
 	public static String getLocationName(int x, int y){
@@ -353,135 +351,94 @@ public class World {
 		return position;
 	}
 
-
-	public static boolean checkNorth()
-	{
-		if(board[xPos][yPos+1] == null)
-		{
+	public static boolean checkNorth() {
+		if(board[xPos][yPos+1] == null) {
 			return false;
 		}
-		
-		else
-		{
+		else {
 			return true;
 		}
-
 	}
 
-	public static boolean checkSouth()
-	{
-		if(board[xPos][yPos-1] == null)
-		{
+	public static boolean checkSouth()	{
+		if(board[xPos][yPos-1] == null)	{
 			return false;
 		}
-		
-		else
-		{
+		else{
 			return true;
 		}
-
 	}	
 
-	public static boolean checkEast()
-	{
-		if(board[xPos + 1][yPos] == null)
-		{
+	public static boolean checkEast(){
+		if(board[xPos + 1][yPos] == null){
 			return false;
 		}
-		
-		else
-		{
+		else {
 			return true;
 		}
 	}
 
-	public static boolean checkWest()
-	{
-		if(board[xPos - 1][yPos] == null)
-		{
+	public static boolean checkWest(){
+		if(board[xPos - 1][yPos] == null){
 			return false;
 		}
-		
-		else
-		{
+		else {
 			return true;
 		}
 	}
 
 	public void moveNorth() {
-			yPos += 1;
-			
+		yPos += 1;
 	}
 
-	public void moveEast()
-	{	
-			xPos += 1;
+	public void moveEast() {
+		xPos += 1;
 	}
 
-	public void moveSouth()
-	{
-			yPos += -1;
+	public void moveSouth() {
+		yPos += -1;
 	}
 
-	public void moveWest()
-	{	
-			xPos += -1;
+	public void moveWest() {
+		xPos += -1;
 	}
 
-	public int getXPos()
-	{
+	public int getXPos() {
 		return xPos;
 	}
 
-	public int getYPos()
-	{
+	public int getYPos() {
 		return yPos;
 	}
 
-	public static void main(String args[])
-	{}
-
 	public Location getLocation(){
-
 		return board[xPos][yPos];
 	}
 
 	public Location getNorthLocation(){
-
 		return board[xPos][yPos+1];
 	}
 
 	public Location getEastLocation(){
-
 		return board[xPos+1][yPos];
 	}
 
 	public Location getSouthLocation(){
-
 		return board[xPos][yPos-1];
 	}
 
 	public Location getWestLocation(){
-
 		return board[xPos-1][yPos];
 	}
 
 	public Location setLocation(int x, int y){
-
 		return board[x][y];
 	}
 
-	public boolean checkLocation()
-	{
-
-		if(getLocation().getLocationName() == "Carleton Auditorium")
-		{
+	public boolean checkLocation() {
+		if(getLocation().getLocationName() == "Carleton Auditorium") {
 			return true;
 		}
-
 		return false;
 	}
-
-	
-
 }

@@ -1,7 +1,6 @@
 public class Action extends Processor{
 
-	public Action()
-	{ 	
+	public Action()	{
 
 	}
 
@@ -22,8 +21,7 @@ public class Action extends Processor{
 					healthState = bad;
 				}
 				moves += 1;
-				}
-			else {
+			}else {
 				System.out.println("Cant go there");
 			}
 		}
@@ -42,9 +40,8 @@ public class Action extends Processor{
 					bad.decreaseHealth(1);
 					healthState = bad;
 				}
-					moves += 1;
-				}
-				else{
+				moves += 1;
+				}else{
 					System.out.println("Cant go there");
 				}
 		}
@@ -67,7 +64,8 @@ public class Action extends Processor{
 			} else {
 				System.out.println("Cant go there");
 			}
-		} else if (instr.equals("west")){
+		}
+		else if (instr.equals("west")){
 			if(world.checkWest()){
 				places.addXMemento(world.getXPos());
 				places.addYMemento(world.getYPos());
@@ -87,7 +85,8 @@ public class Action extends Processor{
 			else {
 				System.out.println("You cant go there");
 			}
-		}else if (instr.equals("back")) {
+		}
+		else if (instr.equals("back")) {
 				if (healthState.getLife() > 5){
 					GoodHealth good = new GoodHealth();
 					good.decreaseHealth(1);
@@ -100,8 +99,8 @@ public class Action extends Processor{
 				moves += 1;
 				ProxyBack proxyBack = new ProxyBack();
 				proxyBack.goBack();
-
-		}else if (instr.equals("beginning")){
+		}
+		else if (instr.equals("beginning")){
 			if (healthState.getLife() > 5){
 				GoodHealth good = new GoodHealth();
 				good.decreaseHealth(1);
@@ -135,6 +134,7 @@ public class Action extends Processor{
 			System.out.println("Item not available in this location");
 		}
 	}
+
 	public void drop(String toDrop) {
 		try {
 			Item d = inventory.getInventoryItem(toDrop);
@@ -147,8 +147,7 @@ public class Action extends Processor{
 		}
 	}
 
-	public void examine(String toExamine)
-	{
+	public void examine(String toExamine) {
 		try {
 			Item item = inventory.getInventoryItem(toExamine);
 
@@ -157,51 +156,38 @@ public class Action extends Processor{
 			System.out.println(itemDescription);
 		}catch (NullPointerException e){
 			System.out.println("Item is not in the inventory");
-	}
+		}
 	}
 
-	public void eat(String toEat)
-	{	
-		if (toEat.equals("spicy_chicken_sandwich"))
-		{	
+	public void eat(String toEat){
+		if (toEat.equals("spicy_chicken_sandwich")) {
 			Item food = inventory.getInventoryItem(toEat);
 			Item eatenItem = inventory.drop(food);
 			healthState.increaseHealth(10);
 			System.out.println("Eating sandwich");
-
 		}
-
-		else if (toEat.equals("taco_stack"))
-		{	
+		else if (toEat.equals("taco_stack")) {
 			Item food = inventory.getInventoryItem(toEat);
 			Item eatenItem = inventory.drop(food);
 			healthState.increaseHealth(15);
 			System.out.println("Eating stack");
-
 		}
-		else if (toEat.equals("pizza"))
-		{	
+		else if (toEat.equals("pizza")) {
 			Item food = inventory.getInventoryItem(toEat);
 			Item eatenItem = inventory.drop(food);
 			healthState.increaseHealth(7);
 			System.out.println("Eating pizza");
 
 		}
-		else if (toEat.equals("chips"))
-		{	
+		else if (toEat.equals("chips"))	{
 			Item food = inventory.getInventoryItem(toEat);
 			Item eatenItem = inventory.drop(food);
 			healthState.increaseHealth(5);
 			System.out.println("Eating chips");
-
 		}
-
-
-		else
-		{
+		else {
 			System.out.println("You can't eat that");
 		}
-
 	}
 
 	public void drink(String toDrink)
@@ -231,100 +217,61 @@ public class Action extends Processor{
 
 	}
 	
-	public void use()
-	{	
+	public void use(){
 		boolean winLocation = world.checkLocation();
 		boolean winItems = inventory.checkInventory();
 
-		if(winLocation && winItems)
-		{	
+		if(winLocation && winItems){
 			System.out.println("");
 			System.out.println("Congrats made to the Final Exam in time");
 			System.out.println("Thanks For Playing You Win");
 			System.out.println("");
 			System.out.println("Game Over");
-
 			//break out of the game//
 		}
-
-		else if (winLocation)
-		{
+		else if (winLocation){
 			System.out.println("You do not have the things required to take this test!!!");
 		}
-
-		else if (winItems)
-		{
+		else if (winItems) {
 			System.out.println("The Final Exam isn't in this Location");
 		}
-
 	}
 
 
-	public void nextMove()
-	{
-		try
-		{ 
-			if(world.getNorthLocation().getLocationName() != null)
-			{	
+	public void nextMove(){
+		try	{
+			if(world.getNorthLocation().getLocationName() != null) {
 				System.out.print("North:");
 				System.out.println(world.getNorthLocation().getLocationName());
 			}
-		}
-
-			catch (NullPointerException ex)
-			{
+		}catch (NullPointerException ex) {
 				System.out.println("");
-			}
-
-
-		try
-		{ 
-			if(world.getEastLocation().getLocationName() != null)
-			{	
+		}
+		try {
+			if(world.getEastLocation().getLocationName() != null) {
 				System.out.print("East:");
 				System.out.println(world.getEastLocation().getLocationName());
-				
 			}
-		}
-
-		catch (NullPointerException ex)
-			{
+		}catch (NullPointerException ex) {
 				System.out.println("");
-			}
-
-		try
-		{ 
-			if(world.getSouthLocation().getLocationName() != null)
-			{	
+		}
+		try	{
+			if(world.getSouthLocation().getLocationName() != null) {
 				System.out.print("South:");
 				System.out.println(world.getSouthLocation().getLocationName());
 			}
-		}
-
-		catch (NullPointerException ex)
-		{
+		}catch (NullPointerException ex) {
 			System.out.println("");
 		}
 
-		try
-		{ 
-			if(world.getWestLocation().getLocationName() != null)
-			{	
+		try	{
+			if(world.getWestLocation().getLocationName() != null) {
 				System.out.print("West:");
 				System.out.println(world.getWestLocation().getLocationName());
 			}
-		}
-
-		catch (NullPointerException ex)
-		{
+		}catch (NullPointerException ex) {
 			System.out.print("");
 		}
 	}
-
-
-
-	public static void main(String args[])
-	{}
-
 
 }

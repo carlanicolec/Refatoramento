@@ -9,5 +9,4 @@ public class PlaceMemento {
     public void savePositionY(int yPos){
         yPos = yPos;
     }
-
 }

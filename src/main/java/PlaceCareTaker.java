@@ -34,6 +34,7 @@ public class PlaceCareTaker {
     public int getXSize(){
         return allX.size();
     }
+
     public int getYSize(){
         return allY.size();
     }
@@ -44,12 +45,12 @@ public class PlaceCareTaker {
         removeX(index);
         return lastX;
     }
+
     public int getLastY(){
         int lastY =allY.get(allY.size()-1);
         int index = allY.size()-1;
         removeY(index);
         return lastY;
     }
-
 
 }
