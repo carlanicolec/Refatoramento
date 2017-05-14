@@ -25,18 +25,16 @@ public class Processor {
 		}	
 
 		// modify game state
-
 		return "";
 	}
 
-	public String[] parseCommand(String command)		{
+	public String[] parseCommand(String command){
 			String phrase = command.toLowerCase();
 			String indx = " ";
 			String tokens[] = phrase.split(indx);
 			return tokens;
 
-		}
-
+    }
 
 	public  void determineAction(String args[]) {
         try {
@@ -54,8 +52,7 @@ public class Processor {
                 gameStart = true;
 
             }
-
-            if (act.equals("command")) {
+            else if (act.equals("command")) {
                 System.out.println("Command List");
                 newLine();
                 System.out.println("Enroll - Starts a new game");
@@ -94,7 +91,7 @@ public class Processor {
                 newLine();
 
             }
-            if (act.equals("how")) {
+            else if (act.equals("how")) {
                 System.out.println("How To Play");
                 newLine();
                 System.out.println("You are a CollegeKid on the campus of UF");
@@ -107,102 +104,100 @@ public class Processor {
                 System.out.println("Each Move = 1 Energy point");
                 System.out.println("Energy = Life");
                 System.out.println("Eating/Drink increases your Energy");
-
-
             }
 
             if (gameStart) {
                 if (act.equals("clear")) {
                     clear();
-                } else if (act.equals("go")) {
+                }
+                else if (act.equals("go")) {
                     action.move(args[1]);
-                } else if (act.equals("look")) {
+                }
+                else if (act.equals("look")) {
                     String desc = world.getLocation().getDescription();
                     System.out.println(desc);
-                } else if (act.equals("where")) {
+                }
+                else if (act.equals("where")) {
                     action.nextMove();
-                } else if (act.equals("energy")) {
+                }
+                else if (act.equals("energy")) {
                     life();
-                } else if (act.equals("time")) {
+                }
+                else if (act.equals("time")) {
                     time();
-                } else if (act.equals("location")) {
+                }
+                else if (act.equals("location")) {
                     world.getBoardPosition();
-                } else if (act.equals("items")) {
+                }
+                else if (act.equals("items")) {
                     newLine();
                     System.out.println("Items in Location");
                     System.out.println(world.getLocation().getListOfItems());
 
-                } else if (act.equals("take")) {
+                }
+                else if (act.equals("take")) {
                     action.take(args[1]);
-                } else if (act.equals("drop")) {
+                }
+                else if (act.equals("drop")) {
                     action.drop(args[1]);
-                } else if (act.equals("inventory")) {
+                }
+                else if (act.equals("inventory")) {
                     try {
                         System.out.println(inventory.listInventory());
                     } catch (NullPointerException ex) {
                         System.out.println("");
                     }
-                } else if (act.equals("examine")) {
+                }
+                else if (act.equals("examine")) {
                     action.examine(args[1]);
-                } else if (act.equals("use")) {
+                }
+                else if (act.equals("use")) {
                     action.use();
-                } else if (act.equals("eat")) {
+                }
+                else if (act.equals("eat")) {
                     action.eat(args[1]);
-                } else if (act.equals("drink")) {
+                }
+                else if (act.equals("drink")) {
                     action.drink(args[1]);
-                } else {
+                }
+                else {
                     System.out.println("Insert a valid command. If you don't know commands type 'command'");
                 }
             }
-	 	}
-
-	 catch (ArrayIndexOutOfBoundsException ex)
-	 	{
+	 	}catch (ArrayIndexOutOfBoundsException ex) {
 	 		 System.out.println("invalid command");
-
 	 	}
 
 	}
 
-	public static void checkMoves()
-	{
-		if(moves == 75)
-		{	
+	public static void checkMoves() {
+		if(moves == 75) {
 			System.out.println("");
 			System.out.println("You didnt make it in time to make the Final Exam");
 			System.out.println("");
 			System.out.println("                  GAME OVER                     ");
 			System.exit(0);
-
 		}
 	}
 
-	public static void clear()
-	{	
-		for(int i = 0; i < 25 ; i++)
-		{
+	public static void clear() {
+		for(int i = 0; i < 25 ; i++) {
 			System.out.println("");
 		}
 	}
 
-	public static void time()
-	{
+	public static void time() {
 		System.out.print("Moves:");
 		System.out.println(moves);
 	}
-	public static void life()
-	{
+
+	public static void life() {
 		System.out.print("Energy:");
 		System.out.println(healthState.getLife());
-
 	}
 
-
-	public static void newLine()
-	{
+	public static void newLine() {
 		System.out.println("");
 	}
 
-	
-	
 }

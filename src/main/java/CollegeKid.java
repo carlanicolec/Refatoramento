@@ -2,8 +2,8 @@ import java.util.*;
 
 public class CollegeKid {
 	
-	public static void main(String[] args)
-	{
+	public static void main(String[] args){
+
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("               CollegeKid                   ");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
@@ -11,31 +11,22 @@ public class CollegeKid {
 		System.out.println("How To Play");
 		System.out.println("Command List");
 		System.out.println("Dropout");
-		newLine();
+		System.out.println("");
 		System.out.println("Made by H A M II™");
-		newLine();
+		System.out.println("");
 
 		Scanner input = new Scanner(System.in);
 
 		Processor p = new Processor();
 
 		String command = " ";
-	
-		while (!(command.equals("dropout")))
-		{	
-				command = input.nextLine();
 
-				String printout = p.processCommand(command);
+		while (!(command.equals("dropout"))) {
+			command = input.nextLine();
 
-				System.out.println(printout);
-		}				
+			String printout = p.processCommand(command);
+
+			System.out.println(printout);
+		}
 	}
-
-	public static void newLine()
-	{
-		System.out.println("");
-	}
-
-	
-
 }
